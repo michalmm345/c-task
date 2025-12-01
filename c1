@@ -1,0 +1,166 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void items()
+        {
+            int itemsCount = 0;
+            double price = 0;
+            double cheapestPrice = 100000;
+            double totalPrice = 0;
+
+            Console.WriteLine("please enter items number");
+            itemsCount=int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < itemsCount; i++)
+            {
+                Console.WriteLine("please enter price for item");
+                price=double.Parse(Console.ReadLine());
+                totalPrice=price+totalPrice;
+               
+               
+                if (price<cheapestPrice)
+                    cheapestPrice= price;
+                  
+            }
+            if (cheapestPrice < 100)
+                Console.WriteLine("there is");
+
+            Console.WriteLine("the cheapest price is " + cheapestPrice);
+            Console.WriteLine("the total is "+totalPrice);
+
+        }
+        static void battery()
+        {
+            int hours = 24;
+            int battery = 0;
+            int hoursCount = 0;
+            int minBattery = 10000;
+            bool batteryLessThan20=false;
+
+            for (int i = 0; i < hours; i++)
+            {
+                Console.WriteLine("please enter battery%");
+                battery = int.Parse(Console.ReadLine());
+
+                if (battery>80)
+                    hoursCount++;
+                if (battery<minBattery)
+                    minBattery= battery;
+                if (battery<20)
+                    batteryLessThan20=true;
+
+
+
+            }
+            if (batteryLessThan20)
+                Console.WriteLine("there is");
+            Console.WriteLine("the battery was higher than 80 in " + hoursCount + " hours");
+            Console.WriteLine("the lowest battery is " + minBattery);
+
+
+        }
+        static void liters()
+        {
+            int days = 7;
+            double totalLiters = 0;
+            double litersInDay = 0;
+            int daysCount = 0;
+            bool litersLessThan1 = false;
+
+            for (int i = 0; i < days; i++)
+            {
+                Console.WriteLine("please enter liters");
+                litersInDay = double.Parse(Console.ReadLine());
+                totalLiters = totalLiters + litersInDay;
+
+                if (litersInDay > 3)
+                    daysCount++;
+
+                if (litersInDay < 1)
+                    litersLessThan1 = true;
+            }
+            if (litersLessThan1)
+                Console.WriteLine("there is");
+            Console.WriteLine("total liters in a week " + totalLiters);
+            Console.WriteLine("days more than 3 liters " + daysCount);
+        }
+        static void password()
+        {
+            string password = " ";
+            int correctPasswords = 0;
+            int passwordNum = 0;
+            bool containsDigit=false;
+            int charNum=0;
+
+            Console.WriteLine("enter passwords num ");
+            passwordNum = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < passwordNum; i++)
+            {
+                Console.WriteLine("please enter password");
+                password = Console.ReadLine();
+                charNum=password.Length;
+
+                for (int j=0; j < charNum; j++)
+                {
+                    if (char.IsDigit(password[j]))
+                        containsDigit = true;
+                }
+                    
+                if (password.Length > 8 && containsDigit)
+                    correctPasswords++;
+
+            }
+            Console.WriteLine("correct passwords: "+ correctPasswords);
+        }
+        static void temp()
+        {
+            int tempNum = 10;
+            double temp = 0;
+            double average= 0;
+            bool isDayOver40 = false;
+            double minTemp = 300;
+            double maxTemp = -600;
+            double sumTemp = 0;
+
+            for (int i = 0; i < tempNum; i++)
+            {
+                Console.WriteLine("please enter temp");
+                temp = double.Parse(Console.ReadLine());
+                sumTemp = temp + sumTemp;
+
+                if (temp < minTemp)
+                    minTemp = temp;
+                if (temp > maxTemp)
+                    maxTemp = temp;
+                if (temp > 40)
+                    isDayOver40 = true;
+
+                average = sumTemp / tempNum;
+
+
+            }
+            if (isDayOver40)
+                Console.WriteLine("there is");
+            Console.WriteLine("the average is: "+ average);
+            Console.WriteLine("max temp "+ maxTemp);
+            Console.WriteLine("min temp " +minTemp);
+
+        }
+        static void Main(string[] args)
+        {
+            //items();
+            //battery();
+            //liters();
+           //password();
+           temp();
+        }
+    }
+}
